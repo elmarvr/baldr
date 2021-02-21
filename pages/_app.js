@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { GlobalStyles } from "twin.macro";
-import { MarkdownProvider } from "../context/MarkdownContext";
+import PropTypes from "prop-types";
+import {
+  MarkdownProvider,
+  markdownProviderPropTypes,
+} from "../context/MarkdownContext";
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -21,6 +25,14 @@ const App = ({ Component, pageProps }) => {
       </MarkdownProvider>
     </>
   );
+};
+
+App.propTypes = {
+  Component: PropTypes.elementType,
+  pageProps: PropTypes.shape({
+    emails: markdownProviderPropTypes.emails,
+    telefoonnummers: markdownProviderPropTypes.phones,
+  }),
 };
 
 export default App;

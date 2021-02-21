@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import useCarouselContext, { CarouselContext } from "./useCarouselContext";
 import Items from "./Items";
 
@@ -71,6 +72,12 @@ const Carousel = ({ autoplay = true, time = 5000, children, ...props }) => {
       </CarouselContext.Provider>
     </div>
   );
+};
+
+Carousel.propTypes = {
+  autoplay: PropTypes.bool,
+  time: PropTypes.number,
+  children: PropTypes.node,
 };
 
 export { useCarouselContext as useCarousel };

@@ -1,4 +1,5 @@
 import "twin.macro";
+import PropTypes from "prop-types";
 import { getStrapiMedia } from "../../lib/api";
 
 const Image = ({ image, ...props }) => {
@@ -14,5 +15,14 @@ const Image = ({ image, ...props }) => {
     />
   );
 };
+
+export const imagePropTypes = {
+  image: PropTypes.shape({
+    url: PropTypes.string,
+    alternativeText: PropTypes.string,
+  }),
+};
+
+Image.propTypes = imagePropTypes;
 
 export default Image;

@@ -1,6 +1,6 @@
 import "twin.macro";
-
-import Section from "../ui/Section";
+import PropTypes from "prop-types";
+import Section from "@/ui/Section";
 
 const OverOns = ({ overOns }) => {
   return (
@@ -12,5 +12,11 @@ const OverOns = ({ overOns }) => {
     </Section>
   );
 };
+
+const overOnsPropTypes = {
+  overOns: PropTypes.string,
+};
+
+OverOns.propTypes = overOnsPropTypes;
 
 export default OverOns;

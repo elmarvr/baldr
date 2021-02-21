@@ -1,9 +1,10 @@
 import tw, { styled } from "twin.macro";
+import PropTypes from "prop-types";
 import { times } from "lodash";
 
-import Slider from "../ui/Slider/index";
-import Card from "../ui/Card";
-import Section from "../ui/Section";
+import Slider from "../../ui/Slider/index";
+import Section from "../../ui/Section";
+import Lid, { lidPropTypes } from "./Lid";
 
 const Leden = ({ leden }) => {
   return (
@@ -14,7 +15,7 @@ const Leden = ({ leden }) => {
           <>
             <Slider.Items tw="flex space-x-16">
               {leden.map((lid) => (
-                <Lid key={lid.id} {...lid} />
+                <Lid key={`lid-${lid.id}`} {...lid} />
               ))}
             </Slider.Items>
 
@@ -33,26 +34,11 @@ const Leden = ({ leden }) => {
   );
 };
 
-const line = "flex-grow content block bg-gray-300 h-px mx-4";
-
-const Lid = ({ foto, voornaam, achternaam, studie, jaar }) => {
-  const naam = `${voornaam} ${achternaam}`;
-
-  return (
-    <Card>
-      <Card.Image image={foto} tw="w-80 h-60 mb-6 rounded-sm" />
-      <h3 tw="font-heading font-semibold tracking-wider text-3xl text-red-900 mb-2">
-        {naam}
-      </h3>
-      <span
-        css={tw`after:(${line}) before:(${line}) text-gray-500 w-full flex items-center`}
-      >
-        {jaar}
-      </span>
-      <p tw="mt-2 font-thin tracking-wide text-gray-500">{studie}</p>
-    </Card>
-  );
+export const ledenPropTypes = {
+  leden: PropTypes.arrayOf(PropTypes.shape(lidPropTypes)),
 };
+
+Leden.propTypes = ledenPropTypes;
 
 const Bullet = styled.div`
   ${tw`

@@ -1,16 +1,19 @@
 import "twin.macro";
-import Head from "next/head";
-
+import PropTypes from "prop-types";
 import { fetchApi } from "../lib/api";
 
 import OverOns from "../components/sections/OverOns";
-import Leden from "../components/sections/Leden";
-import Bestuur from "../components/sections/Bestuur";
-import Stats from "../components/sections/Stats";
-import Huis from "../components/sections/Huis";
-import Aanbevelingen from "../components/sections/Aanbevelingen";
+import Leden, { ledenPropTypes } from "../components/sections/Leden/Leden";
+import Bestuur, {
+  bestuurPropTypes,
+} from "../components/sections/Bestuur/Bestuur";
+import Stats, { statsPropTypes } from "../components/sections/Stats/Stats";
+import Huis, { huisPropTypes } from "../components/sections/Huis/Huis";
+import Aanbevelingen, {
+  aanbevelingenPropTypes,
+} from "../components/sections/Aanbevelingen/Aanbevelingen";
 
-const Home = ({ leden, bestuur, stats, over_ons, kamers }) => {
+const Home = ({ leden, bestuur, stats, over_ons, kamers, aanbevelingen }) => {
   return (
     <>
       <OverOns overOns={over_ons} />
@@ -18,10 +21,19 @@ const Home = ({ leden, bestuur, stats, over_ons, kamers }) => {
       <Leden leden={leden} />
       <Huis kamers={kamers} />
       <Bestuur {...bestuur} />
-      <Aanbevelingen />
+      <Aanbevelingen aanbevelingen={aanbevelingen} />
     </>
   );
 };
+
+// Home.propTypes = {
+//   leden: PropTypes.shape(ledenPropTypes.ledxen),
+//   bestuur: PropTypes.shape(bestuurPropTypes),
+//   stats: PropTypes.shape(statsPropTypes),
+//   over_ons: PropTypes.string,
+//   kamers: PropTypes.shape(huisPropTypes.kamers),
+//   aanbevelingen: PropTypes.shape(aanbevelingenPropTypes.aanbevelingen),
+// };
 
 export const getStaticProps = async (ctx) => {
   const home = await fetchApi("/home-pagina");
@@ -31,9 +43,11 @@ export const getStaticProps = async (ctx) => {
   const emails = await fetchApi("/emails");
   const telefoonnummers = await fetchApi("/telefoonnummers");
   const kamers = await fetchApi("/kamers");
+  const aanbevelingen = await fetchApi("/aanbevelings");
 
   return {
     props: {
+      aanbevelingen,
       kamers,
       emails,
       telefoonnummers,

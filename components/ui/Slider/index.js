@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useSpring } from "react-spring";
 import { isFunction, clamp } from "lodash";
 
@@ -25,7 +26,7 @@ const Slider = ({ children, itemsInView = 3, ...props }) => {
       ...prev,
       pages: Math.ceil(items.current.length / itemsInView),
     }));
-  }, []);
+  }, [itemsInView]);
 
   const gotoPage = (page) => {
     set((prev) => ({ ...prev, page: clamp(page, 0, state.pages) }));
@@ -67,6 +68,11 @@ const Slider = ({ children, itemsInView = 3, ...props }) => {
       </SliderContext.Provider>
     </div>
   );
+};
+
+Slider.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  itemsInView: PropTypes.number,
 };
 
 Slider.Items = Items;

@@ -1,23 +1,24 @@
 import { useContext } from "react";
 import MarkdownContext from "../../context/MarkdownContext";
 
-const Link = ({ value, type }) => {
+const Link = ({ href, node }) => {
   const { emails, phones } = useContext(MarkdownContext);
+  const [{ value }] = node.children;
 
-  switch (type) {
+  switch (value) {
     case "phone": {
-      const phone = phones.find((phone) => phone.naam === value).nummer;
+      const phone = phones.find((phone) => phone.naam === href).nummer;
 
       return <a href={`tel:${phone}`}>{phone}</a>;
     }
     case "email": {
-      const email = emails.find((email) => email.naam === value).email;
+      const email = emails.find((email) => email.naam === href).email;
 
       return <a href={`mailto:${email}`}>{email}</a>;
     }
 
     default: {
-      return <a href={`/${type}`}>{value}</a>;
+      return <a href={`/${value}`}>{href}</a>;
     }
   }
 };

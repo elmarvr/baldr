@@ -1,19 +1,11 @@
 import "twin.macro";
 import { useState, useRef, useEffect, Children } from "react";
+import PropTypes from "prop-types";
 import { useGesture } from "react-use-gesture";
 import { animated } from "react-spring";
-import {
-  first,
-  last,
-  findIndex,
-  take,
-  map,
-  property,
-  nth,
-  clamp,
-} from "lodash";
+import { first, last, findIndex, take, map, property, nth } from "lodash";
 
-import { findClosest } from "../../../utils/findClosest";
+import { findClosest } from "@/utils/findClosest";
 import useSlider from "./useSlider";
 
 const Items = ({ children, ...props }) => {
@@ -90,7 +82,7 @@ const Items = ({ children, ...props }) => {
   };
 
   const getGridX = () => {
-    //last item always snaps to last cell
+    // last item always snaps to last cell
     if (-x.get() > getGridCellsWidth(items.length - itemsInView)) {
       return nth(items, -itemsInView).x;
     }
@@ -108,11 +100,9 @@ const Items = ({ children, ...props }) => {
       const viewHeight = items[0].height;
       return { ...prev, viewWidth, viewHeight };
     });
-
-    console.log(items);
   }, [itemsInView]);
 
-  //Outside layer to slider
+  // Outside layer to slider
 
   return (
     <div
@@ -152,6 +142,10 @@ const Items = ({ children, ...props }) => {
       </animated.div>
     </div>
   );
+};
+
+Items.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Items;
