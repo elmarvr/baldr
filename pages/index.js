@@ -45,6 +45,8 @@ export const getStaticProps = async (ctx) => {
   const kamers = await fetchApi("/kamers");
   const aanbevelingen = await fetchApi("/aanbevelings");
 
+  console.log(leden);
+
   return {
     props: {
       aanbevelingen,
