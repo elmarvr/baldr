@@ -6,7 +6,8 @@
       "@/sections/*": ["components/sections/*"],
       "@/ui/*": ["components/ui/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/lib/*": ["lib/*"]
     }
   }
 }

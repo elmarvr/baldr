@@ -1,14 +1,12 @@
 import "twin.macro";
 import PropTypes from "prop-types";
-import { getStrapiMedia } from "../../lib/api";
+import { getStrapiMedia } from "@/lib/api";
 
 const Image = ({ image, ...props }) => {
-  const src = getStrapiMedia(image);
-
   return (
     <img
       draggable={false}
-      src={src}
+      src={getStrapiMedia(image)}
       tw="object-cover object-center"
       {...props}
       alt={image?.alternativeText}
