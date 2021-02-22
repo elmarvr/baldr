@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useSpring } from "react-spring";
 import { isFunction, clamp } from "lodash";
 
-import Items from "./items";
+import Items from "./Items";
 import { SliderContext } from "./useSlider";
 
 const Slider = ({ children, itemsInView = 3, ...props }) => {
