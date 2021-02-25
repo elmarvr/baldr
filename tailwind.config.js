@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   purge: [],
@@ -43,5 +44,16 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwindcss-textshadow"),
+    plugin(({ addUtilities, theme }) => {
+      return addUtilities({
+        "text-gold": {
+          color: "transparent",
+          backgroundClip: "text",
+          backgroundImage: `linear-gradient(to bottom right, ${theme(
+            "colors.yellow.300"
+          )}, ${theme("colors.yellow.500")})`,
+        },
+      });
+    }),
   ],
 };

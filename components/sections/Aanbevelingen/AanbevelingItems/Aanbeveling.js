@@ -1,13 +1,16 @@
 import "twin.macro";
 import PropTypes from "prop-types";
 import Image, { imagePropTypes } from "@/ui/Image";
-import Stars from "@/components/ui/Stars/Stars";
+import Stars from "@/ui/Stars/Stars";
+import Heading from "@/ui/Heading";
 
 const Aanbeveling = ({ wapen, naam, omschrijving, cijfer }) => (
   <div tw="flex flex-col items-center space-y-6 justify-center w-full">
     <Image image={wapen} tw="w-24 h-24 rounded-full bg-gray-100" />
 
-    <h3 tw="text-gray-900 text-4xl font-heading tracking-widest">{naam}</h3>
+    <Heading as="h3" tw="text-gray-900">
+      {naam}
+    </Heading>
 
     <p tw="text-center text-white" css={{ maxWidth: "400px" }}>
       {omschrijving}

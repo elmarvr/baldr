@@ -5,10 +5,18 @@ import ReactMarkdown from "react-markdown";
 
 import Strong from "../renderers/Strong";
 import Link from "../renderers/Link";
+import Heading from "@/ui/Heading";
 
 const Section = tw.section`flex flex-col items-center py-24 w-full`;
 
-Section.Title = tw.h2`text-5xl tracking-wider text-gray-800 font-heading mb-20 uppercase after:(border-b-2 border-red-900 border-dashed w-24 mx-auto h-2 content block mt-3)`;
+Section.Title = (props) => (
+  <Heading
+    as="h2"
+    size="lg"
+    tw="text-gray-800 mb-20 uppercase after:(border-b-2 border-red-900 border-dashed w-24 mx-auto h-2 content block mt-3)"
+    {...props}
+  />
+);
 
 Section.Content = styled.div`
   max-width: 1100px;

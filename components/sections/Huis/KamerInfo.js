@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Icon as ApiIcon } from "@iconify/react-with-api";
 import { animated, useTransition } from "react-spring";
 import { useCarousel } from "@/ui/Carousel";
+import Heading from "@/ui/Heading";
 
 const KamerInfo = ({ kamers }) => {
   const { page } = useCarousel();
@@ -31,9 +32,9 @@ const KamerInfo = ({ kamers }) => {
           css={{ maxWidth: "350px" }}
         >
           <animated.div style={style} tw="h-full">
-            <h3 tw="font-heading tracking-wider text-red-900 text-4xl mb-2">
+            <Heading as="h3" tw="text-red-900 mb-2">
               {kamers[item].titel}
-            </h3>
+            </Heading>
             <p tw="text-gray-600 mb-6">{kamers[item].omschrijving}</p>
             <ul tw="space-y-8 text-lg font-semibold text-gray-700">
               {kamers[item].eigenschappen.map((eigenschap) => (

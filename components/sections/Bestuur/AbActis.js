@@ -4,6 +4,7 @@ import { animated, useSpring } from "react-spring";
 import useBounce from "@/hooks/springs/useBounce";
 import Card from "@/ui/Card";
 import { imagePropTypes } from "@/ui/Image";
+import Heading from "@/ui/Heading";
 import BestuursLidCard, { bestuurslidCardPropTypes } from "./BestuursLidCard";
 
 const AbActis = ({
@@ -81,26 +82,24 @@ const AbActisBack = ({ email, nummer, ...props }) => (
     tw="h-full w-full absolute top-0 left-0 bg-gray-100 flex flex-col items-center p-6 text-center justify-between"
     {...props}
   >
-    <h3 tw="tracking-widest text-3xl text-red-900 font-heading mb-1">
+    <Heading as="h3" size="sm" tw="text-red-900 mb-1">
       Zin om te borrelen?
-    </h3>
+    </Heading>
 
     <div>
-      <h4 tw="text-xl tracking-wider font-heading">
-        <span tw="bg-gradient-to-br from-yellow-300 to-yellow-500 bg-clip-text text-transparent mr-1">
-          Bel me
-        </span>
+      <Heading as="h4" size="xs">
+        <span tw="text-gold mr-1">Bel me</span>
         😉
-      </h4>
+      </Heading>
       <a href={`tel:${nummer}`} tw="text-gray-900 hover:text-red-700">
         {nummer}
       </a>
     </div>
 
     <div>
-      <h4 tw="text-xl tracking-wider font-heading  bg-gradient-to-br from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+      <Heading as="h4" size="xs" tw="text-gold">
         Stuur een mailtje
-      </h4>
+      </Heading>
       <a href={`mailto:${email}`} tw="text-gray-900 hover:text-red-700">
         {email}
       </a>
